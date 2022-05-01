@@ -15,3 +15,28 @@ Multi-Line Comment
 */
 ```
 
+Declare Variable
+```cs
+int number;
+```
+
+Initialize Variable
+```cs
+number = 1;
+```
+
+Declare & Initialize Variable
+```cs
+int number = 1;
+```
+
+Declare multiple variables simultaneously
+```cs
+int a, b, c;
+```
+
+Assign multiple variables simultaneously
+```cs
+a = b = c = 10;
+```
+
