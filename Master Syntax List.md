@@ -101,6 +101,57 @@ ToBoolean bool
 Defined Min and Max Values
 ```cs
 int aBigNumber = int.MaxValue; //Max value that the type int can currently represent
-short aBigNegativeNumber = short.MinValue;
+short aBigNegativeNumber = short.MinValue; //Min value that the type short can currently represent
+```
+
+Positive and Negative Infinity
+```cs
+double infinity = double.PositiveInfinity;
+double negInfinity = double.NegativeInfinity;
+```
+
+Not a number (NaN)
+```cs
+double notAnyRealNumber = double.NaN; //Used when a computation results in an impossible value
+```
+
+Unary Operators
+```cs
+int a = 3;
+int b = -a; //results in -3
+int c = +a; //no change, results in 3
+```
+
+Remainder or Modulus Operator
+```cs
+int leftOverApples = 23 % 3; //results in 2
+```
+
+Updating Variables
+```cs
+int a = 0;
+a += 5; // a = a + 5
+a -= 2; // a = a - 2
+a *= 4; // a = a * 4
+a /= 2; // a = a / 2
+a %= 2; // a = a % 2
+```
+
+Postfix Increment and Decrement Operators
+```cs
+int a = 0;
+a++; // a += 1
+a--; // a -= 1
+```
+
+Prefix Increment and Decrement Operators
+```cs
+int x;
+
+x = 5;
+int y = ++x; //y is equal to 6
+
+x = 5;
+int z = x++; //z is equal to 5
 ```
 
