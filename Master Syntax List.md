@@ -404,6 +404,8 @@ if (shields > 0 || armor > 0)
 ### Switches
 - Alternative to multi-part if statements
 
+![switch](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/switch.png)
+
 Switch in Statement form
 - Use `case` keyword followed by a value to check against (in this instance, the int `1`)
 - This works exactly the same as a multi-line `if` and `else if` statement
@@ -450,3 +452,6 @@ response = choice switch
   _ => "Default option."
 };
 ```
+
+Looping
+![loop](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/loop.png)
