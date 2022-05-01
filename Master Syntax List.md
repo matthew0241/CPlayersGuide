@@ -3,7 +3,7 @@
 This covers the major formatting and programming guidelines outlined in RB Whitaker's C# Player's Guide (Fifth Edition)
 
 ## Levels 01-14: Basics
-![BASICS](../assets/basics.png)
+![BASICS](../Assets/basics.png)
 
 ### Comments
 
