@@ -400,3 +400,53 @@ if (shields <= 0 && armor <= 0)
 if (shields > 0 || armor > 0)
   Console.WriteLine("You're still alive! Keep going!");
 ```
+
+### Switches
+- Alternative to multi-part if statements
+
+Switch in Statement form
+- Use `case` keyword followed by a value to check against (in this instance, the int `1`)
+- This works exactly the same as a multi-line `if` and `else if` statement
+```cs
+switch (choice)
+{
+  case 1:
+    Console.WriteLine("Case 1");
+    break;
+  case 2:
+    Console.WriteLine("Case 2");
+    break;
+  case 3:
+    Console.WriteLine("Case 3");
+    break;
+  default:
+    Console.WriteLine("Default case");
+    break;
+}
+```
+
+Multiple cases can be assigned to the same switch arm
+```cs
+case 1:
+case 2:
+  Console.WriteLine("That's a good choice!");
+  break;
+```
+
+Switch in Expression form
+- Target (in this instance, choice) comes BEFORE `switch` keyword rather than after in statement form
+- Breaks and case labels are no longer needed
+- Cases now separated by commas
+- Default is now replaced by `_` wildcard
+
+```cs
+string response;
+
+response = choice switch
+{
+  1 => "Choice number one",
+  2 => "Choice number two",
+  3 => "Choice number three",
+  _ => "Default option."
+};
+```
