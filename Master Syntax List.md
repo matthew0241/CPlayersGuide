@@ -226,7 +226,7 @@ health = Math.Calmp(health, 0, 100); // keep variable in the interval 0 to 100
 MathF (provides many methods as Math, but uses floats instead)
 ```cs
 float x = 3;
-float xSquare = MathF.Pow(x, 2); // math pow expects doubles as inputs and returns doubles, MathF makes cast back to float unnecessary
+float xSquare = MathF.Pow(x, 2); // math pow expects doubles as inputs and returns doubles, MathF makes cast to float unnecessary
 ```
 
 ### Using Console Class
