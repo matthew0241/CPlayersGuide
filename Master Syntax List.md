@@ -95,3 +95,12 @@ ToChar    char
 ToString  string
 ToBoolean bool
 ```
+
+### Math
+
+Defined Min and Max Values
+```cs
+int aBigNumber = int.MaxValue; //Max value that the type int can currently represent
+short aBigNegativeNumber = short.MinValue;
+```
+
