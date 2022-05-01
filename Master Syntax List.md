@@ -155,3 +155,22 @@ x = 5;
 int z = x++; //z is equal to 5
 ```
 
+Casting (going from a wide type scope to a narrow type scope)
+```cs
+int anInt = 3;
+byte aByte = (byte)anInt; //explicit conversion, programmer is telling the compiler, force this to move to a byte
+```
+
+Casting Math operations for small types (math operations are not defined for types smaller than int)
+```cs
+short a = 2;
+short b = 3;
+short total = (short)(a + b);
+```
+
+Casting Math operations for integer to floating point (if we didn't cast the below code, it would assume integer division!)
+```cs
+int amountDone = 20;
+int amountToDo = 100;
+double fractionDone = (double)amountDone/ amountToDo; //either side can be cast, program will automatically convert to a double operation
+```
