@@ -453,5 +453,6 @@ response = choice switch
 };
 ```
 
-Looping
+### Looping
+
 ![loop](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/loop.png)
