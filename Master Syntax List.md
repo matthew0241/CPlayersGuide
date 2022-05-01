@@ -75,8 +75,23 @@ Scientific Notation
 double avogadrosNumber = 6.022e23; //e stands for "exponent"
 ```
 
-Convert CLass and Parse Methods
+Convert Class and Parse Methods
 ```
 ToByte    Byte
 ToInt16   short
+ToInt32   int
+ToInt64   long
+
+ToSByte   sbyte
+ToUInt16  ushort
+ToUInt32  uint
+ToUInt64  ulong
+
+ToSingle  float
+ToDecimal decimal
+ToDouble  double
+
+ToChar    char
+ToString  string
+ToBoolean bool
 ```
