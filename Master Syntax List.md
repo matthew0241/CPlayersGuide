@@ -458,7 +458,7 @@ response = choice switch
 ![loop](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/loop.png)
 
 While Loop
-- If loop is false initially, loop will not run at all
+- If loop is `false` initially, loop will not run at all
 - Loop's condition is ONLY evaluated at the start of each cycle
 - Entirely possible to build infinite loops
 
@@ -495,4 +495,20 @@ while (playersNumber < 0 || playersNumber > 10);
 ```
 
 For Loop
-- 
+- Lets you pack loop management into a single line
+- Like a while loop, if condition is `false` initially, for loop will not run at all
+```cs
+for (initialization statement; condition to evaluate; updating action)
+{
+  // ...
+}
+
+// displays numbers 1 through 5
+
+for (int x = 1; x <= 5; x++)
+  Console.WriteLine(x);
+```
+
+Break & Continue
+- Break forces loop to 
+
