@@ -4,6 +4,14 @@ This covers the major formatting and programming guidelines outlined in RB Whita
 
 ## Basics
 
+Comment
 ```cs
-int x = 0;
+//
 ```
+
+Multi-Line Comment
+```cs
+/*
+*/
+```
+
