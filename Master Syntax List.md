@@ -65,7 +65,8 @@ Char assignment
 char aLetter = 'a';
 ```
 
-Integer and conversion to literals (everything smaller than an int type is automatically literal)
+Integer and conversion to literals 
+- Everything smaller than an int type is automatically literal
 ```cs
 ulong aVeryBigNumber = 1_000_000_000_000U; // U signifies it is unsigned and must be uint or ulong
 aVeryBigNumber = 1_000_000_000_000L; // L signifies it is the long literal and must be long or ulong
@@ -171,14 +172,16 @@ int anInt = 3;
 byte aByte = (byte)anInt; // explicit conversion, programmer is telling the compiler, force this to move to a byte
 ```
 
-Casting Math operations for small types (math operations are not defined for types smaller than int)
+Casting Math operations for small types 
+- Math operations are not defined for types smaller than int
 ```cs
 short a = 2;
 short b = 3;
 short total = (short)(a + b);
 ```
 
-Casting Math operations for integer to floating point (if we didn't cast the below code, it would assume integer division!)
+Casting Math operations for integer to floating point 
+- If we didn't cast the below code, it would assume integer division!
 ```cs
 int amountDone = 20;
 int amountToDo = 100;
@@ -223,13 +226,15 @@ health += 10;
 health = Math.Calmp(health, 0, 100); // keep variable in the interval 0 to 100
 ```
 
-MathF (provides many methods as Math, but uses floats instead)
+MathF 
+- Provides many methods as Math, but uses floats instead
 ```cs
 float x = 3;
 float xSquare = MathF.Pow(x, 2); // math pow expects doubles as inputs and returns doubles, MathF makes cast to float unnecessary
 ```
 
 ### Using Console Class
+![console](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/console.png)
 
 WriteLine
 ```cs
@@ -269,6 +274,7 @@ Console.WriteLine($"My favorite number is {myFavoriteNumber}."); // Use $ for st
 ```
 
 Alignment
+- Adding prefix and postfix whitespace
 ```cs
 string name1 = "Steve";
 
@@ -284,4 +290,85 @@ Console.WriteLine($"{name1,-20} - 1");
 // Output:
 // Steve                - 1
 
+```
+
+Formatting
+```cs
+Console.WriteLine($"{Math.PI:0.000}"); // 0 indicates required number even if it isn't necessary
+Console.WriteLine($"{42:#.##}); // Displays "42"
+Console.WriteLine($"{42.1234:#:##}); // Displays "42.12"
+Console.WriteLine($"{.444:0.0%}"); // Displays "44.4%"
+```
+
+### Decision Making
+
+If Statement 
+- Only runs if the conditional statement is true
+```cs
+if (score == 100)
+  Console.WriteLine("A+! Perfect score!");
+  
+// or in block statement form
+
+if (score == 100)
+{
+  Console.WriteLine("A+! Perfect score!");
+}
+```
+
+Important note on block statements
+- Block statements receive their own variables, variables within a block cannot be used outside of the block
+
+```cs
+int score == 100;
+
+if (score == 100)
+{
+  char grade = 'A';
+}
+
+Console.WriteLine(grade); // COMPILER ERROR
+```
+
+Else & Else if
+- Counterpart to if statement, else specifies alternative if the if statement is false, else if allows additional checks
+
+```cs
+int score == 100;
+
+if (score == 100)
+  Console.WriteLine("A+! Perfect score!");
+else
+  Console.WriteLine("Try again.");
+  
+// else if example
+
+if (score == 100)
+  Console.WriteLine("A+! Perfect score!");
+else if (score == 99)
+  Console.WriteLine("Missed by THAT much.");
+else
+  Console.WriteLine("Try again.");
+```
+
+Relational Operators
+
+```
+==  equal to
+!=  not euqal to
+<   less than
+>   greater than
+<=  less than or equal to
+>=  greater than or equal to
+```
+
+Bool in decision making
+- Bool can be used to resolve condition checks without if or else
+- For example, `levelComplete` below is always resolving to true or false depending on if `score` is >= `pointsNeededToPass`, no if needed
+
+```cs
+bool levelComplete = score >= pointsNeededToPass;
+
+if (levelComplete)
+  Console.WriteLine("You've beaten the level!");
 ```
