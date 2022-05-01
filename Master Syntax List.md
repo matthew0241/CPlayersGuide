@@ -510,5 +510,11 @@ for (int x = 1; x <= 5; x++)
 ```
 
 Break & Continue
-- Break forces loop to 
+- `Break` forces loop to terminate immediately without reevaluating loop condition
+- `Break` enables you to leave the loop even if the condition is still true
+- `Continue` will cause the loop to stop running the current pass through the loop, but will advance to the next pass, recheck the condition, and keep looping if the condition holds. 
+
+```cs
+
+```
 
