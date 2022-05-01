@@ -301,9 +301,11 @@ Console.WriteLine($"{.444:0.0%}"); // Displays "44.4%"
 ```
 
 ### Decision Making
+![decision](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/decision.png)
 
 If Statement 
 - Only runs if the conditional statement is true
+- If statements can be nested
 ```cs
 if (score == 100)
   Console.WriteLine("A+! Perfect score!");
@@ -355,7 +357,7 @@ Relational Operators
 
 ```
 ==  equal to
-!=  not euqal to
+!=  not equal to
 <   less than
 >   greater than
 <=  less than or equal to
@@ -364,11 +366,37 @@ Relational Operators
 
 Bool in decision making
 - Bool can be used to resolve condition checks without if or else
-- For example, `levelComplete` below is always resolving to true or false depending on if `score` is >= `pointsNeededToPass`, no if needed
+- For example, `levelComplete` below is always resolving to true or false using the check `score` >= `pointsNeededToPass`, no if needed
 
 ```cs
 bool levelComplete = score >= pointsNeededToPass;
 
 if (levelComplete)
   Console.WriteLine("You've beaten the level!");
+```
+
+Logical Operators
+- Not operator: `!`
+- And operator: `&&`
+- Or operator: `||`
+- C# lazily evaluates, meaning, if it knows the whole expression's answer after evaluating only the first part(s), it won't bother evaluating the second part
+
+```cs
+bool levelComplete = score >= pointsNeededToPass;
+
+if(!levelComplete) // if levelComplete is NOT true
+  Console.WriteLine("This level is not over yet!");
+
+int shields = 50;
+int armor = 20;
+
+// && operator
+
+if (shields <= 0 && armor <= 0) 
+  Console.WriteLine("You're dead.");
+  
+// || operator
+
+if (shields > 0 || armor > 0)
+  Console.WriteLine("You're still alive! Keep going!");
 ```
