@@ -5,6 +5,11 @@ This covers the major formatting and programming guidelines outlined in RB Whita
 ## Levels 01-14: Basics
 ![basics](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/basics.png)
 
+- Comments
+- Variables
+- C# Type Specifics
+- Math
+
 ### Comments
 ![comments](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/comments.png)
 
@@ -224,3 +229,59 @@ float x = 3;
 float xSquare = MathF.Pow(x, 2); // math pow expects doubles as inputs and returns doubles, MathF makes the cast unnecessary back to float as well
 ```
 
+### Using Console Class
+
+WriteLine
+```cs
+Console.Write("Hello!"); // Writes without jumping to the following line
+Console.WriteLine("Goodbye!"); // Writes and jumps to the following line
+```
+
+Reading Input
+```cs
+Console.ReadKey(); // waits for single keypress from user "Press any key to continue..."
+
+Console.ReadKey(true); // overload of ReadKey method, the entered key is intercepted here and does not display on-screen
+
+Console.ReadLine(); // reads user input in string form
+```
+
+Changing Console Colors
+```cs
+Console.BackgroundColor = ConsoleColor.Yellow; // changes console background
+Console.FOregroundColor = ConsoleColor.Black; // changes console foreground
+```
+
+Clear screen, change window title, & beep method
+```cs
+Console.Clear();
+Console.Title = "Hello, World!";
+Console.Beep();
+Console.Beep(440, 1000); // frequency and pitch of beep
+```
+
+Escape Sequences
+```cs
+Console.WriteLine("\""); // instructs compiler to interpret " as a literal "
+Console.WriteLine("C:\\Users\\RB\\Desktop\\MyFile.txt"); // To escape \, add an additional \\
+Console.WriteLine(@"C:\Users\RB\Desktop\MyFile.txt"); // verbatim string literal, treat everything exactly as it looks
+Console.WriteLine($"My favorite number is {myFavoriteNumber}."); // Use $ for string interpolation, you can combine $ and @
+```
+
+Alignment
+```cs
+string name1 = "Steve";
+
+// pads before variable
+Console.WriteLine($"#1: {name1,20}");
+
+// Output:
+// #1:               Steve
+
+// pads after variable
+Console.WriteLine($"{name1,-20} - 1");
+
+// Output:
+// Steve                - 1
+
+```
