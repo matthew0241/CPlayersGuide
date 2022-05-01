@@ -3,9 +3,10 @@
 This covers the major formatting and programming guidelines outlined in RB Whitaker's C# Player's Guide (Fifth Edition)
 
 ## Levels 01-14: Basics
-![BASICS](../Assets/basics.png)
+![basics](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/basics.png)
 
 ### Comments
+![comments](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/comments.png)
 
 Comment
 ```cs
@@ -19,6 +20,7 @@ Multi-Line Comment
 ```
 
 ### Varibles
+![variable](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/variable.png)
 
 Declare Variable
 ```cs
@@ -51,6 +53,7 @@ int a = 123_456_789; // (underscore is ignored by the compiler it can appear any
 ```
 
 ### C# Type Specifics
+![types](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/types.png)
 
 Char assignment
 ```cs
@@ -98,6 +101,7 @@ ToBoolean bool
 ```
 
 ### Math
+![math](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/math.png)
 
 Defined Min and Max Values
 ```cs
