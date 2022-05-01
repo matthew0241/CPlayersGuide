@@ -2,7 +2,7 @@
 
 This covers the major formatting and programming guidelines outlined in RB Whitaker's C# Player's Guide (Fifth Edition)
 
-## Basics
+## Levels 01-14: Basics
 
 ### Comments
 
@@ -73,4 +73,10 @@ decimal number3 = 3.5623m;
 Scientific Notation
 ```cs
 double avogadrosNumber = 6.022e23; //e stands for "exponent"
+```
+
+Convert CLass and Parse Methods
+```
+ToByte    Byte
+ToInt16   short
 ```
