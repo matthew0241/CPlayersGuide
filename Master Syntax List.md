@@ -10,7 +10,7 @@ This covers the major formatting and programming guidelines outlined in RB Whita
 - C# Type Specifics
 - Math
 
-### Comments
+## Comments
 ![comments](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/comments.png)
 
 Comment
@@ -24,7 +24,7 @@ Multi-Line Comment
 */
 ```
 
-### Varibles
+## Varibles
 ![variable](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/variable.png)
 
 Declare Variable
@@ -57,7 +57,7 @@ Digit separation
 int a = 123_456_789; // (underscore is ignored by the compiler it can appear anywhere)
 ```
 
-### C# Type Specifics
+## C# Type Specifics
 ![types](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/types.png)
 
 Char assignment
@@ -106,7 +106,7 @@ ToString  string
 ToBoolean bool
 ```
 
-### Math
+## Math
 ![math](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/math.png)
 
 Defined Min and Max Values
@@ -233,7 +233,7 @@ float x = 3;
 float xSquare = MathF.Pow(x, 2); // math pow expects doubles as inputs and returns doubles, MathF makes cast to float unnecessary
 ```
 
-### Using Console Class
+## Using Console Class
 ![console](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/console.png)
 
 WriteLine
@@ -401,7 +401,7 @@ if (shields > 0 || armor > 0)
   Console.WriteLine("You're still alive! Keep going!");
 ```
 
-### Switches
+## Switches
 - Alternative to multi-part if statements
 
 ![switch](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/switch.png)
@@ -453,7 +453,7 @@ response = choice switch
 };
 ```
 
-### Looping
+## Looping
 
 ![loop](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/loop.png)
 
