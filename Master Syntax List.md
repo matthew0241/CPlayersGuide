@@ -456,3 +456,43 @@ response = choice switch
 ### Looping
 
 ![loop](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/loop.png)
+
+While Loop
+- If loop is false initially, loop will not run at all
+- Loop's condition is ONLY evaluated at the start of each cycle
+- Entirely possible to build infinite loops
+
+```cs
+while ( condition)
+{
+  // This code is repeated as long as the condition is true
+}
+
+// displays numbers 1 through 5
+
+int x = 1;
+while (x <= 5)
+{
+  Console.WriteLine(x);
+  x++;
+}
+```
+
+Do/While Loop
+- Evaluates condition at the END of the loop instead of the beginning
+- This ensures loop runs at least once
+
+```cs
+int playersNumber;
+
+do
+{
+  Console.Write("Enter a number between 0 and 10: ");
+  string playerResponse = Console.ReadLine();
+  playersNumber = Convert.ToInt32(playerResponse);
+}
+while (playersNumber < 0 || playersNumber > 10);
+```
+
+For Loop
+- 
