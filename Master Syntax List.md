@@ -803,7 +803,7 @@ Forming a simple new tuple
 Accessing a simple tuple
 
 ```cs
-Console.WriteLine($"Name:{score.Item1} Level:{score.Item3} Score:{score.Item2}"); // suboptimal (which is which?), we can rename these
+Console.WriteLine($"Name:{score.Item1} Level:{score.Item3} Score:{score.Item2}"); // suboptimal (which is which?), we can rename
 ```
 
 Adding names to tuples and accessing those names
@@ -863,3 +863,11 @@ double y = 2;
 (x, y) = (y, x);
 ```
 
+Ignoring Tuple Element with Discards
+- Sometimes you don't need to copy all elements in a tuple array, you can simply discard that unnecessary tuple value
+
+```cs
+(string name, int points, _) = score; // score's 3rd tuple value is simply dropped instead of being assigned
+```
+
+## Classes
