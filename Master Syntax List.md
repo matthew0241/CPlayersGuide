@@ -626,3 +626,33 @@ int[] scores = new int[10];
 foreach (int score in scores)
   Console.WriteLine(score);
 ```
+
+Array of Arrays
+```cs
+int[][] matrix = new int[3][];
+matrix[0] = new int[] { 1, 2 };
+matrix[1] = new int[] { 3, 4 };
+matrix[2] = new int[] { 5, 6 };
+
+// array setup:
+[1  2]
+[3  4]
+[5  6]
+
+// alternate setup
+
+int[,] matrix = new int[3, 2] { { 1 , 2 }, { 3, 4 }, { 5, 6 } }; // comma in index indicates it has more than one dimension
+Console.WriteLine(matrix[0, 1]); // result: 2
+
+// example of looping through a multi-dimensional array
+
+int[,] matrix = new int[4,5];
+
+for (int row = 0; row < matrix.GetLength(0); row++) //GetLength(0) would return 4
+{
+  for (int column = 0; column < matrix.GetLength(1); column++) //Get.Length(1) would return 5
+    Console.Write(matrix[row, column] + " ");
+  
+  Console.WriteLine();
+}
+```
