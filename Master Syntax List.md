@@ -535,6 +535,10 @@ while (true)
 ```
 
 ## Arrays
+- There are no limits on what types can be used in array `double[]`,`[bool[]`, or `char[]`, etc.
+- You can even make arrays of arrays
+
+![array](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/array.png)
 
 Declare an array
 ```cs
@@ -589,3 +593,36 @@ int[] theMiddle = scores[1..^1]; // grabs the second score to the second to last
 int theEnd = scores[2..]; // creates a copy from the entire array except for index 0 and index 1
 ```
 
+Alternate Array Creation Methods
+```cs
+// Useful if you know what values you want your array to initially hold
+int[] scores = new int[10] { 100, 95, 92, 87, 55, 50, 48, 40, 35, 10 }; 
+
+// You can skip listing the length if you initialize like above
+int[] scores = new int[] { 100, 95, 92, 87, 55, 50, 48, 40, 35, 10 };
+
+// You can even skip listing the additional int if it's clear enough for the compiler to determine
+int[] scores = new [] { 100, 95, 92, 87, 55, 50, 48, 40, 35, 10 };
+```
+
+Foreach loop
+- Arrays and loops pair together because doing something with each item usually requires a loop
+- Useful to simplify a for loop syntax
+- `in` keyword separates the variable from the array to iterate over
+
+```cs
+int[] scores = new int[10];
+
+for(int index = 0; index < scores.Length; index++)
+{
+  int score = scores[index];
+  Console.WriteLine(score);
+}
+
+// Following foreach code is the same as the previous code
+
+int[] scores = new int[10];
+
+foreach (int score in scores)
+  Console.WriteLine(score);
+```
