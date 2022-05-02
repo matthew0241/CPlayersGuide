@@ -731,4 +731,56 @@ int DoubleAndAddOne(int value)
 int DoubleAndAddOne(int value) => value * 2 + 1;
 ```
 
-# Levels 15-32: Object-Oriented Programming
+# Levels 15-32: Object-Oriented Programming - Tying together data and methods
+
+## Enumerations 
+- A custom type that lists a set of allowed values
+- Choices are one of a small list of possible options
+- Underneath it all, enumerations are integers at heart in their underlying type
+
+![enumeration](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/enumeration.png)
+
+Defining a new enumeration
+
+```cs
+enum Season { Winter, Spring, Summer, Fall }
+
+// or, with this formatting is the same
+
+enum Season
+{
+  Winter,
+  Spring,
+  Summer,
+  Fall
+}
+```
+
+Assing a variable to an enumeration
+
+```cs
+Season current = Season.Summer;
+```
+
+ConsoleColor uses enumeration
+
+```cs
+Console.BackgroundColor = ConsoleColor.Yellow; // { Black, Yellow, Red, ... }
+```
+
+Change underlying value on enumeration's underlying type
+
+```cs
+enum Season { Winter = 3, Spring = 6, Summer = 9, Fall = 12 }
+
+// Any not assigned number is automatically given the one after the member before it, for example Spring is 2, Summer is 3, etc
+enum Season { Winter = 1, Spring, Summer, Fall }
+
+```
+
+Given enumerations are underlying integers, you can cast between ints and enumerations
+
+```cs
+int number = (int)Season.Fall; // if Fall = 12, this would resolve to 12
+Season now = (Season)2; // if spring is 2, this would resolve to Spring
+```
