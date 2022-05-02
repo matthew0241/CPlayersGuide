@@ -2,8 +2,7 @@
 
 This covers the major formatting and programming guidelines outlined in RB Whitaker's C# Player's Guide (Fifth Edition)
 
-## Levels 01-14: Basics
-![basics](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/basics.png)
+# Levels 01-14: Basics
 
 - Comments
 - Variables
@@ -496,7 +495,7 @@ while (playersNumber < 0 || playersNumber > 10);
 
 For Loop
 - Lets you pack loop management into a single line
-- Like a while loop, if condition is `false` initially, for loop will not run at all
+- Like a while loop, if condition is `false` initially, the `for` loop will not run at all
 ```cs
 for (initialization statement; condition to evaluate; updating action)
 {
@@ -656,3 +655,85 @@ for (int row = 0; row < matrix.GetLength(0); row++) //GetLength(0) would return 
   Console.WriteLine();
 }
 ```
+
+## Methods
+- Methods let you name and reuse a chunk of code
+- Methods can be overloaded
+- Recursion is when a method calls on itself
+- The `main method` is the entry point for our program
+- Using `static` in front of your method is a way to protect against using variables in the main method. The compiler will result in an error if a variable in the main method is used in your method.
+- In C#, you cannot return more than one thign at a time
+
+![methods](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/methods.png)
+
+Defining a new method
+- `void` means the method does not produce a result
+
+```cs
+void CountToTen()
+{
+  for (int current = 1; current == 10; current++)
+    Console.WriteLine(current);
+}
+```
+
+Calling a method
+
+```cs
+CountToTen(); // calls the method below
+
+void CountToTen()
+{
+  for (int current = 1; current == 10; current++)
+    Console.WriteLine(current);
+}
+```
+
+Passing data to a method
+```cs
+void Count(int numberToCountTo)
+{
+  for (int current = 1; current <= numberToCountTo; current++)
+    Console.WriteLine(current);
+}
+
+// using multiple parameters
+
+void CountBetween(int start, int end)
+{
+  for (int current = start; current <= end; current++)
+    Console.WriteLine(current);
+}
+```
+
+Returning a value from a method
+- Instead of returning `void` we need to communicate to the compiler what to return
+- First, indicate the data type that will be return `int ReadNumber()`
+- Second, state what value is returned `return number;`
+
+```cs
+int ReadNumber()
+{
+  string input = Console.ReadLine();
+  int number = Conveert.ToInt32(input);
+  return number;
+}
+```
+
+Methods with Expressions
+- Some methods are simple and can be represented with a single expression 
+- Instead of curly brances and a return statement, the arrow operator is used like in `switch`
+- You can only use an expression body if the whole method can be represented in a single expression
+
+```cs
+int DoubleAndAddOne(int value)
+{
+  return value * 2 + 1;
+}
+
+// the below method expression is the same as above
+
+int DoubleAndAddOne(int value) => value * 2 + 1;
+```
+
+# Levels 15-32: Object-Oriented Programming
