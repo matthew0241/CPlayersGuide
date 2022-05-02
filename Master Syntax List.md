@@ -787,5 +787,79 @@ Season now = (Season)2; // if Spring is 2, this would resolve to Spring
 
 ## Tuples
 - Combine multiple elements into a single bundle
+- Just another type for all practical purposes
+- Can be used as parameter types or return values
 
 ![tuple](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/tuple.png)
+
+Forming a simple new tuple
+- Rather simple, instead of `int score` you would list your requisite variable types in parentheses on both sides
+- Doing it simply like this leaves a lot to be desired
+
+```cs
+(string, int, int) score = ("R2-D2", 12420, 15);
+```
+
+Accessing a simple tuple
+
+```cs
+Console.WriteLine($"Name:{score.Item1} Level:{score.Item3} Score:{score.Item2}"); // suboptimal (which is which?), we can rename these
+```
+
+Adding names to tuples and accessing those names
+
+```cs
+(string Name, int Points, int Level) score = ("R2-D2", 12420, 15); // any unnamed item will be given its `ItemN` name scheme as above
+Console.WriteLine($"Name:{score.Name} Level:{score.Level} Score:{score.Points}");
+```
+
+Passing in a tuple to a method example
+- Like all method passed values, tuples DO NOT have to match the same name as the main method
+- Names are ephemeral in methods and not a part of the main method tuple
+
+```cs
+void DisplayScore((string Name, int Points, int Level) score)
+{
+  Console.WriteLine($"Name:{score.Name} Level:{score.Level} Score:{score.Points}");
+}
+```
+
+Method Returning a Tuple Array
+
+```cs
+(string Name, int Points, int Level)[] CreateHighScores()
+{
+  return new (string, int, int)[3]
+  {
+    ("R2-D2", 12420, 15),
+    ("C-3PO", 8543, 9),
+    ("GONK", -1, 1)
+  };
+}
+```
+
+Deconstructed Tuples
+- Tuples can iterate across like-typed variables
+
+```cs
+var score = (Name: "R2-D2", Points: 12420, Level: 15);
+
+string playerName = score.Name; // will assign one portion of the tuple to this new string
+
+string bacon;
+int eggs;
+int ham;
+
+(name, points, level) = score; // will assign all these variables to the respective tuple value in order
+Console.WriteLine($"{bacon} reached level {ham} with {eggs} points.");
+```
+
+Swapping content values
+- Tuple deconstruction can also be used to swap the contents of two discrete variables in one line
+
+```cs
+double x = 4;
+double y = 2;
+(x, y) = (y, x);
+```
+
