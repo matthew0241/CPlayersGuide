@@ -521,7 +521,7 @@ while (true)
   string input = Console.ReadLine();
   
   if (input == "quit" || input == "exit")
-    break
+    break;
   
   int number = Convert.ToInt32(input);
   
@@ -532,5 +532,33 @@ while (true)
   }
   Console.WriteLine($"I like {number}. It's the one before {number + 1}!");
 }
+```
+
+## Arrays
+
+Declare an array
+```cs
+int [] scores;
+```
+
+Construct a new array to hold items
+- `new` keyword creates new things
+- Once array value is constructed, it cannot change size
+- We could use `new` again to recreate the array, updating `scores` with a new, longer array
+
+```cs
+int[] scores = new int[10]; // creates an array of 10 each with a value of 0
+
+scores = new int[20]; // recreate array with new, longer array
+```
+
+Refer or assign a specific item within array
+```cs
+scores[0] = 99; // Number in bracks [0] is known as the index, in C# index starts at 0
+```
+
+Index can be any int expression, not just a literal
+```cs
+scores[someSpot + 1];
 ```
 
