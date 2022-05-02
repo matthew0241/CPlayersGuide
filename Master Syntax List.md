@@ -4,11 +4,6 @@ This covers the major formatting and programming guidelines outlined in RB Whita
 
 # Levels 01-14: Basics
 
-- Comments
-- Variables
-- C# Type Specifics
-- Math
-
 ## Comments
 ![comments](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/comments.png)
 
