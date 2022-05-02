@@ -782,5 +782,10 @@ Given enumerations are underlying integers, you can cast between ints and enumer
 
 ```cs
 int number = (int)Season.Fall; // if Fall = 12, this would resolve to 12
-Season now = (Season)2; // if spring is 2, this would resolve to Spring
+Season now = (Season)2; // if Spring is 2, this would resolve to Spring
 ```
+
+## Tuples
+- Combine multiple elements into a single bundle
+
+![tuple](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/tuple.png)
