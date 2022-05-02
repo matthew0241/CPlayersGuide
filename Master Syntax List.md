@@ -809,7 +809,7 @@ Console.WriteLine($"Name:{score.Item1} Level:{score.Item3} Score:{score.Item2}")
 Adding names to tuples and accessing those names
 
 ```cs
-(string Name, int Points, int Level) score = ("R2-D2", 12420, 15); // any unnamed item will be given its `ItemN` name scheme as above
+(string Name, int Points, int Level) score = ("R2-D2", 12420, 15); // any unnamed item have `ItemN` name scheme as shown above
 Console.WriteLine($"Name:{score.Name} Level:{score.Level} Score:{score.Points}");
 ```
 
