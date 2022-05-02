@@ -554,11 +554,38 @@ scores = new int[20]; // recreate array with new, longer array
 
 Refer or assign a specific item within array
 ```cs
-scores[0] = 99; // Number in bracks [0] is known as the index, in C# index starts at 0
+scores[0] = 99; // Number in brackets [0] is known as the index, in C# index starts at 0
 ```
 
 Index can be any int expression, not just a literal
 ```cs
 scores[someSpot + 1];
+```
+
+Retrieve array's length
+```cs
+Console.WriteLine(scores.Length);
+
+// Example of creating an array and filling each index with a value of 1
+
+int length = Convert.ToInt32(Console.ReadLine()0;
+int[] array = new int[length];
+
+for(int index = 0; index < array.Length; index++)
+  array[index] = 1;
+```
+
+Index in reverse instead of forward
+```cs
+int lastScore = scores[^1]; // goes to the 2nd to last in array, rather than the 2nd
+```
+
+Grabbing Index Range
+```cs
+int[] firstThreeScores = scores[0..3]; // grabs the first three in scores and copies it to firstThreeScores
+
+int[] theMiddle = scores[1..^1]; // grabs the second score to the second to last score
+
+int theEnd = scores[2..]; // creates a copy from the entire array except for index 0 and index 1
 ```
 
