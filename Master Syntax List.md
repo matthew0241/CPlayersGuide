@@ -732,7 +732,8 @@ int DoubleAndAddOne(int value) => value * 2 + 1;
 ```
 
 # Levels 15-32: Object-Oriented Programming - Tying together data and methods
-## - **Object-Oriented Principle #1:** Encapsulation - Combining data (fields) and the oeprations on that data (methods) into a well-defined unit (a class is one example)
+## - **Object-Oriented Principle #1:** Encapsulation
+- Combining data (fields) and the oeprations on that data (methods) into a well-defined unit (a class is one example)
 
 ## Enumerations 
 - A custom type that lists a set of allowed values
@@ -907,3 +908,12 @@ class Score
 
 **Object-Oriented Principle #1:** Encapsulation - Combining data (fields) and the oeprations on that data (methods) into a well-defined unit (a class is one example)
 
+Using your new class like any other type (`int`, `string`, `long`, `bool`, etc)
+- With a class defined, it can be used like any other type
+- We can declare a variable whose type is `Score` and assign it a new instance
+
+```cs
+Score best = new Score(); // Score() is referring to a special method called a constructor
+```
+
+Invoking methods after our instance of our new class `Score` has been created
