@@ -880,6 +880,7 @@ Ignoring Tuple Element with Discards
 - Classes are reference types
 - An object is a thing in your software responsible for a slice of the entire program, containing data and methods - these define what information the object must remember the capabilities it can perform at request. 
 - Think of a class as a blueprint or pattern for objects that belong to the class
+- Constructors are an important "default check" for classes
 
 ![class](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/class.png)
 
@@ -1111,3 +1112,7 @@ class Score
   }
 }
 ```
+
+## Information Hiding
+
+![info](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/info.png)
