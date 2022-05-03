@@ -1114,5 +1114,85 @@ class Score
 ```
 
 ## Information Hiding
+- Details can and should be hidden from the outside world when possible
+- Class members (fields and methods) should be marked as `public` or `private`
+- Data should be `private` in nearly all cases
+- Three levels: `public`, `private`, and `internal`
 
 ![info](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/info.png)
+
+**Object-Oriented Principle #2:** Information Hiding - Only the object itself should directly access its data
+
+Why private options are important
+- In this example, even though `area` is hidden on our constructor parameter, the outside world can still change area, as shown above, even though we want area to be a discrete calculation that isn't settable by the outside world
+
+```cs
+Rectangle example = new Rectangle(2, 3);
+example._area = 200000;
+Console.WriteLine(rectangle._area);
+
+class Rectangle
+{
+  public float _width;
+  public float _height;
+  public float _area;
+  
+  public Rectangle(float width, float height)
+  {
+    _width = width;
+    _height = height;
+    _area = width * height;
+  }
+}
+```
+
+Private Accessibility
+- Makes fields and methods **only** accessible in the class itself 
+- Known as an *accessibility modifier* 
+- The outside world cannot interfere with private fields and methods
+- This example is hyper private, the code above the class will not compile because `_area` is private, not accessible outside of the class
+
+```cs
+Rectangle rectangle = new Rectangle(2, 3);
+Console.WriteLine(rectangle._area); // Does not compile
+
+class Rectangle
+{
+  private float _width;
+  private float _height;
+  private float _area;
+  
+  public Rectangle(float width; float height) // remember the outside world can't "see" these local constructor fields
+  {
+    _width = width;
+    _height = height;
+    _area = width * height;
+  }
+}
+```
+
+Allowing Controlled Access Through Methods: Getting Fields
+- Using methods, the outside world can access and retrieve variables, for example if we add `Get` methods for each field to our `Rectangle` class
+
+```cs
+public float GetWidth() => _width; // fields stay private, but outside world can still dip in
+public float GetHeight() => _height;
+public float GetArea() => _area;
+```
+
+Allowing Controlled Access Through Methods: Setting fields
+- Same story as getting data, we can also *set* data through publically accessible methods
+
+```cs
+public void SetWidth(float value)
+{
+  _width = value;
+  _area = _width * _height;
+}
+
+public void SetHeight(float value)
+{
+  _height = value;
+  _area = _width * _height;
+}
+```
