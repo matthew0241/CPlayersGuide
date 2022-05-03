@@ -732,6 +732,7 @@ int DoubleAndAddOne(int value) => value * 2 + 1;
 ```
 
 # Levels 15-32: Object-Oriented Programming - Tying together data and methods
+## - **Object-Oriented Principle #1:** Encapsulation - Combining data (fields) and the oeprations on that data (methods) into a well-defined unit (a class is one example)
 
 ## Enumerations 
 - A custom type that lists a set of allowed values
@@ -871,5 +872,38 @@ Ignoring Tuple Element with Discards
 ```
 
 ## Classes
+- Classes are **the most powerful way to define new types**
+- Classes bundle data (fields and variables) and operations on that data (methods)
+- Classes are reference types
+- An object is a thing in your software responsible for a slice of the entire program, containing data and methods - these define what information the object must remember the capabilities it can perform at request. 
+- Think of a class as a blueprint or pattern for objects that belong to the class
 
 ![class](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/class.png)
+
+A simple class
+- Variables in a class are not local variables or parameters, they are another category of variables called `fields` or `instance variables`
+
+```cs
+class Score
+{
+  public string name;
+  public int points;
+  public int level;
+}
+```
+
+A simple class with a method
+
+```cs
+class Score
+{
+  public string name;
+  public int points;
+  public int level;
+  
+  public bool EarnedStar() => (points / level) > 1000;
+}
+```
+
+**Object-Oriented Principle #1:** Encapsulation - Combining data (fields) and the oeprations on that data (methods) into a well-defined unit (a class is one example)
+
