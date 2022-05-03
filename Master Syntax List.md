@@ -5,7 +5,9 @@ This covers the major formatting and programming guidelines outlined in RB Whita
 # Quick Reference
 
 `class` SETUP: `[accessibility level] class [ClassName] { }`
+
 `constructor` SETUP: `[accessibility level] ClassName([optional parameters]) { }`
+
 `property` SETUP: `[accessibility level] [type] ClassName { }`
 
 # Levels 01-14: Basics
@@ -1222,6 +1224,7 @@ public void SetHeight(float value)
 Setting a simple property
 - The first class code example shows how we would make public getters and setters without properties
 - The second class code example shows how a property greatly simplifies this process
+- `value` is a special variable, even though we didn't define a `value` parameter, it automatically exists in a property `set`
 
 ```cs
 // Public getters and setters without properties 
@@ -1245,4 +1248,21 @@ public float Width // this is combining that GetWidth and SetWidth into one
   set => _width = value;
 }
 
+```
+
+Setting a simple property with a block body
+- Same principle just using a block body rather than an expression (works the same as methods in the sense that returns that need more than one line to resolve, need a bigger space to write out)
+
+```cs
+public float Width
+{
+  get
+  {
+    return width;
+  }
+  set
+  {
+    _width = value; // value is a special variable
+  }
+}
 ```
