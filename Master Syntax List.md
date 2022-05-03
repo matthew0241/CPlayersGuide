@@ -871,3 +871,5 @@ Ignoring Tuple Element with Discards
 ```
 
 ## Classes
+
+![class](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/class.png)
