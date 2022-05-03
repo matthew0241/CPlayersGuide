@@ -982,3 +982,24 @@ class Score
 
 Constructors with Parameters
 - Constructors are allowed to have parameters just like other methods
+- It's common for constructors to use parameters to let the outside world provide initial values for some fields
+- Using `n`, `p`, and `l`
+
+```cs
+class Score
+{
+  public string name;
+  public int points;
+  public int level;
+  
+  public Score(string n, int p, int l) 
+  {
+    name = n;
+    points = p;
+    level = l;
+  }
+  
+  public bool EarnedStar() => (points / level) > 1000;
+}
+```
+
