@@ -1428,3 +1428,21 @@ public class Circle
   public float Radius { get; set; } = 0;
 }
 ```
+
+Property Initializer Syntax in limited conditions
+- You may only want to set during an inline initializer, inline initializer, and object initializer syntax but nowhere else
+- Obviously the code above is using `get;` and `set;` so it can manipulate those fields anywhere
+- `init` limits it to those 3 use cases alone
+
+```cs
+Circle circle = new Circle { X = 1, Y = 4, Radius = 3 };
+
+circle.X = 2; // this statement would not compile with the init; preventing it from changing
+
+public class Circle
+{
+  public float X { get; init; } = 0;
+  public float Y { get; init; } = 0;
+  public float Radius { get; init; } = 0;
+}
+```
