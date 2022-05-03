@@ -734,6 +734,8 @@ int DoubleAndAddOne(int value) => value * 2 + 1;
 # Levels 15-32: Object-Oriented Programming - Tying together data and methods
 ## - **Object-Oriented Principle #1:** Encapsulation
 - Combining data (fields) and the oeprations on that data (methods) into a well-defined unit (a class is one example)
+## - **Object-Oriented Principle #2:** Information Hiding
+- Only the object itself should directly access its data
 
 ## Enumerations 
 - A custom type that lists a set of allowed values
@@ -1004,3 +1006,108 @@ class Score
 }
 ```
 
+Asking for a new `Score` instance, but with new parameters
+
+```cs
+Score score = new Score("R2-D2", 12420, 15);
+```
+
+Multiple Constructors with Parameters
+- A class can have as many constructors as needed
+- Each constructor must differ in number or types of parameters
+- With two constructors, the outside world can pick which constructor it wants to use
+
+```cs
+Score a = new Score(); // outside world has chosen Constructor 1 here
+Score b = new Score("R2-D2", 12420, 15); // outside world has chosen Constructor 2 here
+
+class Score
+{
+  public string name;
+  public int points;
+  public int level;
+  
+  public Score() // Constructor 1
+  {
+    name = "Unknown";
+    points = 0;
+    level = 1;
+  }
+  
+  public Score(string n, int p, int l) // Constructor 2
+  {
+    name = n;
+    points = p;
+    level = l;
+  }
+  
+  public bool EarnedStar() => (points / level) > 1000;
+}
+```
+
+Skipping defining constructors
+- In some instances, you may only need a simple constructor by defining the initial fields
+- Or, you may just want to have the fields have a "guaranteed" set value for each
+- Any additional constructor can override these if needed
+
+```cs
+class Score
+{
+  public string name = "Unknown";
+  public int points = 0;
+  public int level = 1;
+  
+  public Score() // this constructor overrides the initial set value of "Unknown"
+  {
+    name = "Mystery";
+  }
+  
+  public bool EarnedStar() => (points / level) > 1000;
+}
+```
+
+Underscore trick
+- Use this to keep consistent naming in field level variables separate from parameter variables
+- Also allows us a clear way to differentiate fields from local variables and parameters
+- This is the de facto standard for naming fields
+
+```cs
+class Score
+{
+  public string _name;
+  public int _points;
+  public int _level;
+  
+  public Score(string name, int points, int level)
+  {
+    _name = name;
+    _points = points;
+    _level = level;
+  }
+}
+```
+
+Constructors calling other constructors
+- Sometimes you may want to use code in one constructor from another
+- In the "outside world" of the class, you can't call a constructor without using the keyword `new`, if you do this, you'd be creating a second object while creating the first, ie, not intended
+- Use the `this` keyword to build off one constructor to another
+
+```cs
+class Score
+{
+  public string _name;
+  public int _points;
+  public int _level;
+  
+  public Score() : this("Unknown", 0, 1) // passes through the constructor below first using the this keyword
+  {
+  }
+  
+  public Score(string name, int points, int level)
+  {
+    _name = name;
+    _points = points;
+    _level = level;
+  }
+}
+```
