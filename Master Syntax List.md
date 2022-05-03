@@ -1318,7 +1318,7 @@ public class Rectangle
 }
 ```
 
-Auto-Implemented Properties Shortcut
+Auto-Implemented Properties
 - Because simple property setting is so common, we can use auto-properties to setup our properties for us, without additional values
 - The first code block example below shows the "long way" the same as it's shown above, the second block shows the auto property shortcut
 - With auto property shortcut, you don't need to pass the keyword `value` or even give the backing field `_name`. You just end the getter and setter with a semicolon, the compiler will generate a backing field for this property and create a basic getter and setter around it.
@@ -1346,7 +1346,7 @@ public class Player
 }
 ```
 
-Auto-Implemented Properties Shortcut with initializing value
+Auto-Implemented Properties with initializing value
 - Because we no longer have that backing field `_name`, we can't initialize to a default value. 
 - This is solvable by simply throwing a value to the right of the auto property
 
@@ -1370,6 +1370,23 @@ public class Rectangle
   {
     Width = width;
     Height = height;
+  }
+}
+```
+
+Auto-Implemented Properties Get-Only (read-only property)
+- Auto properties can be get-only but they cannot be set-only, there is no scenario where a set-only auto property is useful, that would just be black hole of data.
+- When a property is get-only, it can still be assigned values, but only from within a constructor
+- Get-only properties are sometimes referred to as read-only properties, it cannot be changed once the object is created
+
+```cs
+public class Player
+{
+  public string Name { get; } = "Player 1"; // "Player 1" is the default defined name
+  
+  public Player(string name) // in this read-only instance, this is the only place the name can be set
+  {
+    Name = name;
   }
 }
 ```
