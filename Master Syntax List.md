@@ -931,3 +931,31 @@ if (best.EarnedStar())
   Console.WriteLine("You earned a star!");
 ```
 
+Creating more than one instance of a class
+- When we do this, each instance has its own data
+- Each instance is independent of other instances
+- `a` is independent from `b` their variables are not shared
+
+```cs
+Score a = new Score();
+a.name = "R2-D2";
+a.points = 12420;
+a.level = 15;
+
+Score b = new Score();
+b.name = "C-3PO";
+b.points = 8543;
+b.level = 8;
+
+if (a.EarnedStar())
+  Console.WriteLine($"{a.name} earned a star!");
+if (b.EarnedStar())
+  Console.WriteLine(${b.name} earned a star!");
+```
+
+Constructors
+- Special methods that run when an object comes to life to ensure it begins in a good state
+- Constructors are similar to other methods with two caveats:
+  1. Must use the same name as the class
+  2. They cannot list a return type
+- A constructor's job is to get new instances into a legitimate starting state
