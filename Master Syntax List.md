@@ -8,7 +8,7 @@ This covers the major formatting and programming guidelines outlined in RB Whita
 
 `constructor` SETUP: `[accessibility level] ClassName([optional parameters]) { }`
 
-`property` SETUP: `[accessibility level] [type] ClassName { }`
+`property` SETUP: `[accessibility level] [type] ClassName { get{} set{} }`
 
 # Levels 01-14: Basics
 
@@ -1214,7 +1214,7 @@ public void SetHeight(float value)
 **Object-Oriented Principle #3:** Abstraction - The outside world does not need to know each object or class's inner workings and can deal with it as an abstract concept. Abstraction allows the inner workings to change without affecting the outside world.
 
 ## Properties
-- SETUP: `[accessibility level] [type] ClassName { }`
+- SETUP: `[accessibility level] [type] ClassName { get{} set{} }`
 - Pairs a getter and setter under a shared name with field-like access
 - Has the benefit of both information hiding and abstraction 
 - Properties are another type of member we can put into a class (like constructors)
@@ -1240,14 +1240,16 @@ public class Rectangle
 
 // Swapping this out for a property
 
-private float _width;
-
-public float Width // this is combining that GetWidth and SetWidth into one
+public class Rectangle
 {
-  get => _width;
-  set => _width = value;
-}
+  private float _width;
 
+  public float Width // this is combining that GetWidth and SetWidth into one
+  {
+    get => _width;
+    set => _width = value;
+  }
+}
 ```
 
 Setting a simple property with a block body
@@ -1258,11 +1260,88 @@ public float Width
 {
   get
   {
-    return width;
+    return _width;
   }
   set
   {
     _width = value; // value is a special variable
   }
+}
+```
+
+Properties can be `get` or `set` only
+
+```cs
+public float Area
+{
+  get => _width * _height;
+}
+
+// if it is get only, and it can be reduced to an expression, it can be even further simplified
+
+public float Area => _width * _height;
+```
+
+Full Example with outside world field access
+
+```cs
+Rectangle r = new Rectangle(2, 3);
+r.Width = 5; // access to the class properties enables nearly identical to accessing public class fields
+Console.WriteLine($"A {r.Width}x{r.Height} rectangle has an area of {r.Area}.");
+
+public class Rectangle
+{
+  private float _width;
+  private float _height;
+  
+  public Rectangle(float width, float height)
+  {
+    _width = width; 
+    _height = height;
+  }
+  
+  public float Width
+  {
+    get => _width; // this is the returning expression in this property, same as the get return _width; above
+    set => _width = value; // this gets called on by the outside world above, and set to 5
+  }
+  
+  public float Height
+  {
+    get => _height; // this is the returning expression in this property
+    set => _height = value; // these setters could be made private and NOT settable outside the class
+    // private set => _height = value; if we used this, instead of the line above, code would not 
+    // compile if we tried to set height in the outside world
+  }
+  
+  public float Area => _width * _height; // again, this can be reduced to an expression get
+}
+```
+
+Auto-Implemented Properties Shortcut
+- Because simple property setting is so common, we can use auto-properties to setup our properties for us, without additional values
+- The first code block example below shows the "long way" the same as it's shown above, the second block shows the auto property shortcut
+- With auto property shortcut, you don't need to pass the keyword `value` or even give the backing field `_name`. You just end the getter and setter with a semicolon, the compiler will generate a backing field for this property and create a basic getter and setter around it.
+- Again, notice in Block 2 that the entire CLASS no longer needs that backing field. There is no `private string _name;` necessary
+
+```cs
+// Block 1 - showing properties as has been done above
+
+public class Player
+{
+  private string _name;
+  
+  public string Name
+  {
+    get => _name;
+    set => _name = value;
+  }
+}
+
+// Block 2 - showing properties with the auto shortcut
+
+public class Player
+{
+  public string Name { get; set; } // no need to give the value keyword for set or define the backing field
 }
 ```
