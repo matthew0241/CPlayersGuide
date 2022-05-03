@@ -2,6 +2,12 @@
 
 This covers the major formatting and programming guidelines outlined in RB Whitaker's C# Player's Guide (Fifth Edition)
 
+# Quick Reference
+
+`class` SETUP: `[accessibility level] class [ClassName] { }`
+`constructor` SETUP: `[accessibility level] ClassName([optional parameters]) { }`
+`property` SETUP: `[accessibility level] [type] ClassName { }`
+
 # Levels 01-14: Basics
 
 ## Comments
@@ -877,6 +883,7 @@ Ignoring Tuple Element with Discards
 ```
 
 ## Classes
+- SETUP: `[accessibility level] class [ClassName] { }`
 - Classes are **the most powerful way to define new types**
 - Classes bundle data (fields and variables) and operations on that data (methods)
 - Classes are reference types
@@ -959,6 +966,7 @@ if (b.EarnedStar())
 ```
 
 Constructors
+- SIMPLE SETUP: `public ClassName([optional parameters]) { }`
 - Special methods that run when an object comes to life to ensure it begins in a good state
 - Constructors are similar to other methods with two caveats:
   1. Must use the same name as the class
@@ -1204,5 +1212,37 @@ public void SetHeight(float value)
 **Object-Oriented Principle #3:** Abstraction - The outside world does not need to know each object or class's inner workings and can deal with it as an abstract concept. Abstraction allows the inner workings to change without affecting the outside world.
 
 ## Properties
+- SETUP: `[accessibility level] [type] ClassName { }`
+- Pairs a getter and setter under a shared name with field-like access
+- Has the benefit of both information hiding and abstraction 
+- Properties are another type of member we can put into a class (like constructors)
 
 ![prop](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/prop.png)
+
+Setting a simple property
+- The first class code example shows how we would make public getters and setters without properties
+- The second class code example shows how a property greatly simplifies this process
+
+```cs
+// Public getters and setters without properties 
+
+public class Rectangle
+{
+  private float _width;
+  
+  public float GetWidth() => _width;
+  
+  public void SetWidth(float value) => _width = value;
+}
+
+// Swapping this out for a property
+
+private float _width;
+
+public float Width // this is combining that GetWidth and SetWidth into one
+{
+  get => _width;
+  set => _width = value;
+}
+
+```
