@@ -917,3 +917,17 @@ Score best = new Score(); // Score() is referring to a special method called a c
 ```
 
 Invoking methods after our instance of our new class `Score` has been created
+- Methods are accessed through an instance of the `Score` class (or your class you created obviously), in this case that instance is `best`
+- You assign new values to each instancce, as these fields belong to the instance, so we must access them through a reference to an instance, in this case that instance is `best`
+
+```cs
+Score best = new Score();
+
+best.name = "R2-D2"
+best.points = 12420;
+best.level = 15;
+
+if (best.EarnedStar())
+  Console.WriteLine("You earned a star!");
+```
+
