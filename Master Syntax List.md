@@ -1377,7 +1377,8 @@ public class Rectangle
 Auto-Implemented Properties Get-Only (read-only property)
 - Auto properties can be get-only but they cannot be set-only, there is no scenario where a set-only auto property is useful, that would just be black hole of data.
 - When a property is get-only, it can still be assigned values, but only from within a constructor
-- Get-only properties are sometimes referred to as read-only properties, it cannot be changed once the object is created
+- Get-only properties are sometimes referred to as read-only properties, it cannot be changed once the object is created (inside or outside the class)
+- Also known as immutability
 
 ```cs
 public class Player
@@ -1390,3 +1391,22 @@ public class Player
   }
 }
 ```
+
+Read-Only Regular Properties
+- In the same way, it may be useful to make normal properties read-only after construction, we can do this with regular properties not just auto-properties
+- adding `readonly` makes it so it can only be assigned in one of two places
+  1. As an initializer (ie `private string name = "Here!";`)
+  2. In a constructor
+
+```cs
+public class Player
+{
+  private readonly string _name; // readonly goes between the accessibility and type
+  
+  public Player(string name)
+  {
+    _name = name;
+  }
+}
+```
+
