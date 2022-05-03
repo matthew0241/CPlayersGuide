@@ -736,6 +736,8 @@ int DoubleAndAddOne(int value) => value * 2 + 1;
 - Combining data (fields) and the oeprations on that data (methods) into a well-defined unit (a class is one example)
 ## - **Object-Oriented Principle #2:** Information Hiding
 - Only the object itself should directly access its data
+## - **Object-Oriented Principle #3:** Abstraction 
+- The outside world does not need to know each object or class's inner workings and can deal with it as an abstract concept. Abstraction allows the inner workings to change without affecting the outside world.
 
 ## Enumerations 
 - A custom type that lists a set of allowed values
@@ -1118,6 +1120,7 @@ class Score
 - Class members (fields and methods) should be marked as `public` or `private`
 - Data should be `private` in nearly all cases
 - Three levels: `public`, `private`, and `internal`
+- The default state is `private`
 
 ![info](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/info.png)
 
@@ -1196,3 +1199,5 @@ public void SetHeight(float value)
   _area = _width * _height;
 }
 ```
+
+**Object-Oriented Principle #3:** Abstraction - The outside world does not need to know each object or class's inner workings and can deal with it as an abstract concept. Abstraction allows the inner workings to change without affecting the outside world.
