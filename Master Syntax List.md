@@ -1410,3 +1410,21 @@ public class Player
 }
 ```
 
+Property Initializer Syntax
+- Sometimes you may want to set a property right as the object is created
+- You can do this via object initializer syntax
+- You cannot use initializer syntax with properties that are get only
+- Object initializer syntax comes after the constructor finishes, in this `class Circle`, there is no constructor explicitly outlined in our `class` (it's just null/0)
+
+```cs
+Circle circle = new Circle() { Radius = 3, X = -4 }; // the curly braces here are out property initializer
+// or, because our Circle class does not have a constructor it could be written like this:
+Circle circle = new Circle { Radius = 3, X = -4 }; // exactly the same just no () after Circle
+
+public class Circle
+{
+  public float X { get; set; } = 0; // The x-coordinate of the circle's center.
+  public float Y { get; set; } = 0 // The y-coordinate of the circle's center.
+  public float Radius { get; set; } = 0;
+}
+```
