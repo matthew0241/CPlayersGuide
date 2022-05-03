@@ -959,3 +959,26 @@ Constructors
   1. Must use the same name as the class
   2. They cannot list a return type
 - A constructor's job is to get new instances into a legitimate starting state
+- Specifics of getting it into a legitimate starting state vary from class to class
+- Assigning initial values to each field is common
+
+```cs
+class Score
+{
+  public string name;
+  public int points;
+  public int level;
+  
+  public Score() // here's our constructor
+  {
+    name = "Unknown";
+    points = 0;
+    level = 1;
+  }
+  
+  public bool EarnedStar() => (points / level) > 1000;
+}
+```
+
+Constructors with Parameters
+- Constructors are allowed to have parameters just like other methods
