@@ -1345,3 +1345,31 @@ public class Player
   public string Name { get; set; } // no need to give the value keyword for set or define the backing field
 }
 ```
+
+Auto-Implemented Properties Shortcut with initializing value
+- Because we no longer have that backing field `_name`, we can't initialize to a default value. 
+- This is solvable by simply throwing a value to the right of the auto property
+
+```cs
+public class Player
+{
+  public string Name { get; set; } = "Player";
+}
+```
+
+Full Example with Auto Properties
+
+```cs
+public class Rectangle 
+{
+  public float Width { get; set; } // auto property
+  public float Height { get; set; } // auto property
+  public float Area => Width * Height; // property expression
+  
+  public Rectangle(float width, float height) // constructor
+  {
+    Width = width;
+    Height = height;
+  }
+}
+```
