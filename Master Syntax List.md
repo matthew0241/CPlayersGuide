@@ -1121,6 +1121,7 @@ class Score
 - Data should be `private` in nearly all cases
 - Three levels: `public`, `private`, and `internal`
 - The default state is `private`
+- This is a concept, not necessarily directly a built-in C# "tool" (other than the `public` and `private` keywords which are explained in-depth in this section). Properties take this concept and push it to the next level, giving field-like access but still protecting data in a class. 
 
 ![info](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/info.png)
 
@@ -1201,3 +1202,7 @@ public void SetHeight(float value)
 ```
 
 **Object-Oriented Principle #3:** Abstraction - The outside world does not need to know each object or class's inner workings and can deal with it as an abstract concept. Abstraction allows the inner workings to change without affecting the outside world.
+
+## Properties
+
+![prop](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/prop.png)
