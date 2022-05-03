@@ -983,7 +983,8 @@ class Score
 Constructors with Parameters
 - Constructors are allowed to have parameters just like other methods
 - It's common for constructors to use parameters to let the outside world provide initial values for some fields
-- Using `n`, `p`, and `l`
+- Using `n`, `p`, and `l` avoids sharing names with `name`, `points`, and `level`. A local variable or parameter is allowed to have the same name as a field, but when they share names, this can cause issues
+- The constructor below has three parameters, letting the calling code provide initial values for each field
 
 ```cs
 class Score
