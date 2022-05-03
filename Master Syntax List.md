@@ -913,7 +913,7 @@ class Score
 
 Using your new class like any other type (`int`, `string`, `long`, `bool`, etc)
 - With a class defined, it can be used like any other type
-- We can declare a variable whose type is `Score` and assign it a new instance
+- We can declare a variable whose type is `Score` and assign it through a `new` instance
 
 ```cs
 Score best = new Score(); // Score() is referring to a special method called a constructor
