@@ -442,6 +442,7 @@ Switch in Expression form
 - Breaks and case labels are no longer needed
 - Cases now separated by commas
 - Default is now replaced by `_` wildcard
+- In this example, `response` is being assigned by the `choice` variable. So whatever `choice` gives to `response` will be switched into the corresponding below option. Remember, `choice` is its own variable. 
 
 ```cs
 string response;
