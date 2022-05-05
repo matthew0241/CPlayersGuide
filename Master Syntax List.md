@@ -742,7 +742,7 @@ int DoubleAndAddOne(int value) => value * 2 + 1;
 
 # Levels 15-32: Object-Oriented Programming - Tying together data and methods
 ## - **Object-Oriented Principle #1:** Encapsulation
-- Combining data (fields) and the oeprations on that data (methods) into a well-defined unit (a class is one example)
+- Combining data (fields) and the operations on that data (methods) into a well-defined unit (a class is one example)
 ## - **Object-Oriented Principle #2:** Information Hiding
 - Only the object itself should directly access its data
 ## - **Object-Oriented Principle #3:** Abstraction 
