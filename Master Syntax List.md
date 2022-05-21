@@ -1601,9 +1601,8 @@ private string GetTopPlayerName() // No longer needs to allow nulls
 }
 ```
 
-If the code before `??` evaluates to `null` the fallback value of `"(not found)"` will be used instead
-
-There's also a compound assignment operator for this:
+- If the code before `??` evaluates to `null` the fallback value of `"(not found)"` will be used instead
+- There's also a compound assignment operator for this:
 
 ```cs
 private string GetTopPlayerName()
@@ -1622,13 +1621,14 @@ The Null-Forgiving Operator: `!`
 string message = MightReturnNullIfNegative(+10);
 ```
 
-Assuming the return type of `MightReturnNullIfNegative` is `string?`, the compiler will flag this as a situation where you are assigning a potentially null value to a variable that indicates nuil isn't allowed. But assuming the method nam eisn't a lie, we know the returned value can't be null
+- Assuming the return type of `MightReturnNullIfNegative` is `string?`, the compiler will flag this as a situation where you are assigning a potentially null value to a variable that indicates nuil isn't allowed. But assuming the method nam eisn't a lie, we know the returned value can't be null
 - To get rid of the compiler warning, we can use the null-forgiving operator `!` 
 - The operator tells the compiler "I know this looks like a null problem, but it won't be. Trust me."
+- With the `!` there, the warning will go away
+- Use `!` sparingly, it can be dangerous
 
 ```cs
 string message = MightReturnNullIfNegative(+10)!; //! at the end
 ```
 
-With the `!` there, the warning will go away
-Use `!` sparingly, it can be dangerous
+
