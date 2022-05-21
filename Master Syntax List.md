@@ -1533,3 +1533,102 @@ public static class Utilities
 }
 ```
 
+## Null References
+- Null references are helpful when it is possible for there to be no data available for something
+- `null` is the default value for reference types
+- There are situations that can return `null` which can cause problems
+
+![null](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/null.png)
+
+Null or not?
+- For referenced-typed variables, stop and think if `null` should be an option or not
+- Annotating a variable is a relatively new feature of C# (starting in C# 9)
+- If we want to allow a null, we include a `?` that means it may legitimately contain a null value, for example:
+
+```cs
+string? name = Console.ReadLine(); // Can return null
+```
+
+Checking for `null`
+- You may need to check for null, if a reference variable can result in a null
+- The quickest way to compare a reference against the `null` literal is a null check
+
+```cs
+string? name = Console.ReadLine();
+if (name != null)
+  Console.WriteLine("The name is not null.");
+```
+
+Null-conditional operators ? and ?[]
+- One problem with null checking si that there may be implications down the line
+- In the example below, if any part of `_scoreManager` is null, it will crash, so we would have to check at each step
+
+```cs
+prviate string? GetTopPlayerName()
+{
+  if (_scoreManager == null) return null;
+  
+  Score[]? scores = _scoreManager.GetScores();
+  if (scores == null) return null;
+  
+  Score? topScore = scores[0];
+  if(topScore == null) return null;
+  
+  return topScore.Name;
+}
+```
+
+These excessive null checks make it difficult to read
+- There is another option, null-conditional operators. The `?.` and `?[]` operators can be used in place of `.` and `[]` to simultaneously check for null and access the member:
+
+```cs
+private string? GetTopPlayerName()
+{
+  return _scoreManager?.GetScores()?[0]?.Name;
+}
+```
+
+Both `?.` and `?[]` evaluate the part before it to see if it is null, if it is, no further evaluation happens and the whole expression evaluates to `null`
+- If it is not null, evaluation will continue as though it had been normal
+
+The Null Coalescing Operator `??`
+- The null coalescing operator is a useful tool, it takes an expression that might be `null` and provides a value or expression to use as a fallback if it is
+
+```cs
+private string GetTopPlayerName() // No longer needs to allow nulls
+{
+  return _scoreManager?.GetScores()?[0]?.Name ?? "(not found)";
+}
+```
+
+If the code before `??` evaluates to `null` the fallback value of `"(not found)"` will be used instead
+
+There's also a compound assignment operator for this:
+
+```cs
+private string GetTopPlayerName()
+{
+  string? name = _scoreManager?.GetScores()?[0]?.Name;
+  name ??= "(not found)";
+  return name; // No compiler warning. ??= ensures we have a real value
+}
+```
+
+The Null-Forgiving Operator: `!`
+- The compiler is thorough in analyzing what can and can't be null, and giving you appropriate warnings
+- On infrequent occasions, you know something about the code that the compiler simply can't infer, for example:
+
+```cs
+string message = MightReturnNullIfNegative(+10);
+```
+
+Assuming the return type of `MightReturnNullIfNegative` is `string?`, the compiler will flag this as a situation where you are assigning a potentially null value to a variable that indicates nuil isn't allowed. But assuming the method nam eisn't a lie, we know the returned value can't be null
+- To get rid of the compiler warning, we can use the null-forgiving operator `!` 
+- The operator tells the compiler "I know this looks like a null problem, but it won't be. Trust me."
+
+```cs
+string message = MightReturnNullIfNegative(+10)!; //! at the end
+```
+
+With the `!` there, the warning will go away
+Use `!` sparingly, it can be dangerous
