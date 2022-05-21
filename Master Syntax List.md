@@ -1447,3 +1447,89 @@ public class Circle
   public float Radius { get; init; } = 0;
 }
 ```
+
+## Static
+- We have implicit inconsistency, we've used instances in classes like `Console` or `Convert` but we've never needed to call `new Console()` specifically
+- The `static` keyword can be used to detach instances and tie them to the class itself (ie, Math.Sqrt())
+- A `static` method doesn't need an instance of the class to be used, it's intrinsically part of the class
+- `Static` can be used on fields or variables
+
+![static](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/static.png)
+
+Simple Static Variable Example
+
+```cs
+public class Score
+{
+  private static readonly int PointThreshold = 1000;
+}
+``` 
+
+Static Properties
+- Properties can also be static
+- Below is a simple example of a property version of the previous variable
+
+```cs
+prublic class Score
+{
+  public static int PointThreshold { get; } = 1000;
+}
+```
+
+Static Methods
+- A static method is not tied to a single instance, so it cannot refer to non-static fields, properties, or methods
+- The static method below determines how many scores in an array belong toa specific player
+
+```cs
+public static int CountForPlayer(string playerName, Score[] scores)
+{
+  int count = 0;
+  foreach (Score score in scores)
+    if (score.Name == playerName) count++;
+  return count;
+}
+```
+
+Factory Method
+- Creates new instances for the outside world as an alternative to calling a constructor
+
+```cs
+public static Rectangle CreateSquare(float size) => new Rectangle(size, size);
+
+//that method would be called like this:
+
+Rectangle rectangle = Rectangle.CreateSquare(2);
+```
+
+Static Constructors
+- If a class has static fields or properties, you may need logic to initialize them
+- To initialize, you could define a static constructor
+
+```cs
+public class Score
+{
+  public static readonly int PointThreshold;
+  public static readonly int LevelThreshold;
+  
+  static Score()
+  {
+    PointThreshold = 1000;
+    LevelThreshold =4;
+  }
+}
+```
+
+Static Classes
+- Some classes are nothing more than a collection of related utility methods, fields, or properties
+- `Console`, `Convert`, and `Math`, are all examples of this. In these cases you may way to forbid creating instances of the class
+- This prevents the `new` keyword from being used whatsoever
+
+```cs
+public static class Utilities
+{
+  public static int Helper1() => 4;
+  public static double HelperProperty => 4.0;
+  public static int AddNumbers(int a, int b) => a + b;
+}
+```
+
