@@ -1631,4 +1631,8 @@ string message = MightReturnNullIfNegative(+10);
 string message = MightReturnNullIfNegative(+10)!; //! at the end
 ```
 
+## Inheritance
+- 
 
+
+![inheritance](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/inheritance.png)
