@@ -1654,6 +1654,7 @@ Inheritance and the Object Class
 - The `object` class does not have many responsibilities 
 - It can call its method `ToString()` to create a string representation of any object. The default implementation displays the full name of the object's type
 - It can also call its method `Equals` to indicate whether two things are considered equal or not, it returns a boolean `True` or `False`
+- A derived class can only choose one base class
 
 ```cs
 // ToString() Example
@@ -1696,10 +1697,84 @@ public class Point
 - Although `Point` is a different class than `object`, it can be treated as one because it is derived from `object`
 - Although the example `thing` below can hold `object` classes, the variable makes no promises it has a reference to anything more specific than `object`
 - The variable itself can only guarantee it has a reference to an `object`
+- Placing a reference to a derived class like `Point` into a base class like `object` does not mean that information is lost forever
 
 ```cs
 object thing = new Point(2, 4); // Referencing our Point class even though its type is object
 
 Console.WriteLine(thing.ToString()); // Safe
 Console.WriteLine(thing.X); // Compiler error
+```
+
+Choosing Base Classes
+- Even though `object` is the default base class, it's simple to claim a different class as the base class
+- For example, the `Asteroid` class below can use `GameObject` as a base class
+- `Asteroid` inherits everything from the base class, it also adds `Size` and `RotationAngle` as properties, these are unique to `Asteroid`
+
+```cs
+public class GameObject
+{
+  public float PositionX { get; set; }
+  public float PositionY { get; set; }
+  public float VelocityX { get; set; }
+  public float VelocityY { get; set; }
+  
+  public void Update()
+  {
+    PositionX += VelocityX;
+    PositionY += VelocityY;
+  }
+}
+
+public class Asteroid : Game Object // the : allows the derivation and inheritance
+{
+  public float Size { get; }
+  public float RotationAngle { get; }
+}
+```
+
+- Assume we made additional classes `Bullet` and `Ship` that also derive from `GameObject`. We could setup a new game of *Asteroids* with a collection of game objects of mixed types like the example below
+- The array below stores references to `GameObject` instances, but the array contains instances of the `Asteroid`, `Bullet`, and `Ship` classes. The array is fine with this because all of them derive from `GameObject`
+
+```cs
+GameObject[] gameObjects = new GameObjects[]
+{
+  new Asteroid(), new Asteroid(), new Asteroid(), new Bullet(), new Ship()
+};
+```
+
+- Even though we are dealing with 4 total classes (1 base class, 3 derived classes), we can still call the `Update` method on any of them since it is defined by `GameObject` all the derived classes are guaranteed to have that method
+
+```cs
+foreach (GameObject item in gameObjects)
+  item.Update;
+```
+
+Constructors
+- Constructors are not inherited
+- But we must leverage constructors defined int he base class when making new constructors in the derived class
+- In the example below, `Asteroid` wil automatically call `GameObject`'s parameterless constructor
+- Calling `new Asteroid()` will enter `Asteroid`'s constructor and immediately jump to `GameObject`'s parameterless constructor to set `PositionX` and `PositionY` then return to `Asteroid`'s constructor to set `RotationAngle`
+- The derived class has the "last say" on values. For example, if in your `Asteroid` parameterless constructor you gave `PositionX` a value of 3, it would have a value of 3, not `GameObject`'s assignment of 2. 
+
+```cs
+public class GameObject
+{
+  public GameObject()
+  {
+    PositionX = 2; PositionY = 4;
+  }
+  
+  // Properties and other things here
+}
+
+public class Asteroid : GameObject
+{
+  public Asteroid()
+  {
+    RotationAngle = -1;
+  }
+  
+  // Properties and other things here
+}
 ```
