@@ -1778,3 +1778,21 @@ public class Asteroid : GameObject
   // Properties and other things here
 }
 ```
+
+Multiple Constructors in Inheritance
+- Suppose a base class has more than one constructor or does not include a parameterless constructor, in that case, you need to expressly state which base class constructor to build upon for any new constructors in the derived class
+- In the example below, there is no parameterless constructor to call, so you will need to expressly state which constructor to build upon for any new constructors in the derived class
+
+```cs
+public GameObject(float positionX, float positionY, float velocityX, float velocityY)
+{
+  PositionX = positionX; 
+  PositionY = positionY;
+  VelocityX = velocityX;
+  VelocityY = velocityY;
+}
+
+public Asteroid(float positionX, float positionY, float velocityX, float velocityY) : base(positionX, positionY, velocityX, velocityY)
+{
+}
+```
