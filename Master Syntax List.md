@@ -740,13 +740,15 @@ int DoubleAndAddOne(int value)
 int DoubleAndAddOne(int value) => value * 2 + 1;
 ```
 
-# Levels 15-32: Object-Oriented Programming - Tying together data and methods
+# Levels 15-32: Programming - Tying together data and methods
 ## - **Object-Oriented Principle #1:** Encapsulation
 - Combining data (fields) and the operations on that data (methods) into a well-defined unit (a class is one example)
 ## - **Object-Oriented Principle #2:** Information Hiding
 - Only the object itself should directly access its data
 ## - **Object-Oriented Principle #3:** Abstraction 
 - The outside world does not need to know each object or class's inner workings and can deal with it as an abstract concept. Abstraction allows the inner workings to change without affecting the outside world.
+## - **Object-Oriented Principle #4:** Inheritance
+- Basing one class on another, retaining the orginal class's functionality while extending the new class with additional capabilities
 
 ## Enumerations 
 - A custom type that lists a set of allowed values
@@ -1632,7 +1634,72 @@ string message = MightReturnNullIfNegative(+10)!; //! at the end
 ```
 
 ## Inheritance
-- 
+- Allows you to derive new classes based on existing ones
+- The new class inherits everything excep constructors
+- All classes derive from `object` by default
 
 
 ![inheritance](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/inheritance.png)
+
+General Info
+- Sometimes it's necessary to derive new classes based on existing ones (or simply easier to do so)
+- You can define this subtype or specialization in C# using inheritance 
+- Inheritance allows you to treat subtypes as more generalized whenever necessary, second it allows you to consolidate would would be duplicated or copy-and-pasted code
+
+**Object-Oriented Principle #4:** Inheritance - Basing one class on another, retaining the orginal class's functionality while extending the new class with additional capabilities
+
+Inheritance and the Object Class
+- When inheritance is defined, the new class gets everything the old class had, the new class can add in extra stuff, and the new class can always be treated as though it were the original since it has all of those capabilities
+- Every class defined automatically extends from a base class called the `object`class
+- The `object` class does not have many responsibilities 
+- It can call its method `ToString()` to create a string representation of any object. The default implementation displays the full name of the object's type
+- It can also call its method `Equals` to indicate whether two things are considered equal or not, it returns a boolean `True` or `False`
+
+```cs
+// ToString() Example
+object thing = new object();
+
+Console.WriteLine(thing.ToString()); //outputs "System.Object"
+
+// Equals example
+object a = new object();
+object b = a;
+object c = new object();
+Console.WriteLine(a.Equals(b)); // returns true
+Console.WriteLine(a.Equals(c)); // returns false - even though the contents of both objects are blank, a points to a different location on the heap
+```
+
+Object Class Derivation
+- Because object has `ToString()` and `Equals` any class you create has `ToString` and `Equals`
+- For example, this `Point` class below, can use `Equals` or `ToString()`
+
+```cs
+Point p1 = new Point(2, 4);
+Point p2 = p1;
+Console.WriteLine(p1.ToString()); // derived from object
+Console.Write(p1.Equals(p2)); // derived from object
+
+public class Point
+{
+  public float X { get; }
+  public float Y { get; }
+  
+  public Point(float x, float y)
+  {
+    X = x; Y = y;
+  }
+}
+```
+
+- Because a derived class has all the base class's capabilities, you can use the derived class anywhere the bass class is expected
+- The example below shows a variable with a type of `object` but we give it a reference to a `Point`
+- Although `Point` is a different class than `object`, it can be treated as one because it is derived from `object`
+- Although the example `thing` below can hold `object` classes, the variable makes no promises it has a reference to anything more specific than `object`
+- The variable itself can only guarantee it has a reference to an `object`
+
+```cs
+object thing = new Point(2, 4); // Referencing our Point class even though its type is object
+
+Console.WriteLine(thing.ToString()); // Safe
+Console.WriteLine(thing.X); // Compiler error
+```
