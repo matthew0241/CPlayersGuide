@@ -1796,3 +1796,88 @@ public Asteroid(float positionX, float positionY, float velocityX, float velocit
 {
 }
 ```
+
+Casting and Checking for Types
+- If you have a **base** type and need to get a **derived** type, you have some options.
+- For example, the below sample results in a compiler error
+
+```cs
+GameObject gameObject = new Asteroid();
+Asteroid asteroid = gameObject; // ERROR!
+```
+
+- The `gameObject` variable can only guarantee it has a `GameObject` class. It might reference something more specific, like an `Asteroid`. By casting, we can get the computer to treat the object as the more specialized type:
+
+```cs
+GameObject gameObject = new Asteroid();
+Asteroid asteroid = (Asteroid)gameObject; // Use with caution
+```
+
+- Casting tells the compiler that you are guaranteeing it will be safe to treat this as an `Asteroid`
+- The program will crash when running if you are wrong
+- Generally, you should only *downcast* (going from a base class to a derived class) if you check for the correct type first
+- There are three ways to perform this check
+
+**1. The first way is with object's GetType() method and the typeof keyword:**
+
+```cs
+if (gameObject.GetType() == typeof(Asteroid)) {...}
+```
+
+- `GetType()` returns the type object associated with the isntance's class. If `gameobject` is an `Asteroid` it will return the type object representing the `Asteroid` class.
+- `typeof` lets you access special objects by name so you can see if an object's type matches some specific class
+- `GetType()` will only work if there's an exact match
+
+
+**2. The second way is with the `as` keyword:**
+
+```cs
+GameObject gameOjbect = CreateAGameObject();
+Asteroid? asteroid = gameObject as Asteroid;
+```
+
+- The `as` keyword simultaneously does a check and the conversion. If `gameObject` is an `Asteroid` or something derived from `Asteroid`, then the variable `asteroid` will contain the reference to the object, now known to be an `Asteroid`. If `gameObject` is a `Ship` or a `Bullet` then `asteroid` will be `null`, that means you want to do a null `?` check before using the variable
+
+**3. The third way is with the `is` keyword:**
+
+```cs
+if (gameObject is Asteroid asteroid)
+{
+  // You can use the `asteroid` variable here
+}
+```
+
+- The `is` keyword is powerful and is one way to use patterns. But it is frequently used to simply check the type and assign it to a new a variable
+- If you don't need the variable that the example above creates, you can check it this way:
+
+```cs
+if (gameObject is Asteroid) { ... }
+```
+
+The Protected Access Modifier
+- The 3 accessibility modifiers we've used so far are `private`, `public`, and `internal`
+- The 4th accessibility modifier is the `protected` keyword
+- A `protected` access modifier is accessible within the class and any derived classes, for example below
+- If we maket hese setters protected instead of public, only `GameObject` and its derived classes (like `Asteroid` and `Ship`) can change those properties, the outside world cannot
+
+```cs
+public class GameObject
+{
+  public float PositionX { get; protected set; }
+  public float PositionY { get; protected set; }
+  public float VelocityX { get; protected set; }
+  public float VelocityY { get; protected set; }
+}
+```
+
+Sealed classes
+- If you want to forbid others from deriving from a specific class, you can prevent it by adding the `sealed` modifier to the class definition
+- In this case, nobody will be able to derive a new class based on `Asteroid`
+- Class sealing can occasionally result in a performance boost
+
+```cs
+public sealed class Asteroid : GameObject
+{
+  // ...
+}
+```
