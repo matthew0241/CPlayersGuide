@@ -111,6 +111,8 @@ ToBoolean bool
 ## Math
 ![math](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/math.png)
 
+https://csharpplayersguide.com/articles/operators-table.html
+
 Defined Min and Max Values
 ```cs
 int aBigNumber = int.MaxValue; // Max value that the type int can currently represent
