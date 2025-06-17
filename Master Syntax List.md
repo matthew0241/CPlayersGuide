@@ -540,10 +540,12 @@ while (true)
 ```
 
 ## Arrays
+![array](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/array.png)
+
 - There are no limits on what types can be used in array `double[]`,`[bool[]`, or `char[]`, etc.
 - You can even make arrays of arrays
 
-![array](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/array.png)
+
 
 Declare an array
 ```cs
@@ -663,6 +665,8 @@ for (int row = 0; row < matrix.GetLength(0); row++) //GetLength(0) would return 
 ```
 
 ## Methods
+![methods](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/methods.png)
+
 - Methods let you name and reuse a chunk of code
 - Methods can be overloaded
 - Recursion is when a method calls on itself
@@ -670,7 +674,7 @@ for (int row = 0; row < matrix.GetLength(0); row++) //GetLength(0) would return 
 - Using `static` in front of your method is a way to protect against using variables in the main method. The compiler will result in an error if a variable in the main method is used in your method.
 - In C#, you cannot return more than one thign at a time
 
-![methods](https://github.com/matthew0241/CPlayersGuide/blob/main/Assets/methods.png)
+
 
 Defining a new method
 - `void` means the method does not produce a result
